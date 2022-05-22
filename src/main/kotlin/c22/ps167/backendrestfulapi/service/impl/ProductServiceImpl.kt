@@ -32,12 +32,21 @@ class ProductServiceImpl(
     }
 
     override fun createBulk(request: List<CreateProductRequest>): Int {
-        productRepository.saveAll(
-            request.map {
-                validationUtil.validate(it)
-                convertRequestToProductAndNutritionFact(it)
+        val result = mutableListOf<CreateProductRequest>()
+
+        request.forEach {
+            validationUtil.validate(it)
+            if (!productRepository.existsById(it.id!!)) {
+                result.add(it)
             }
-        )
+        }
+
+        if (result.isEmpty()) {
+            throw AlreadyExistException()
+        }
+
+        productRepository.saveAll(result.map { convertRequestToProductAndNutritionFact(it) })
+
         return request.size
     }
 
