@@ -7,7 +7,9 @@ import c22.ps167.backendrestfulapi.data.model.dto.ProductDto
 import c22.ps167.backendrestfulapi.data.repository.ProductRepository
 import c22.ps167.backendrestfulapi.service.ProductService
 import c22.ps167.backendrestfulapi.util.error.AlreadyExistException
+import c22.ps167.backendrestfulapi.util.error.NotFoundException
 import c22.ps167.backendrestfulapi.util.validation.ValidationUtil
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -39,6 +41,11 @@ class ProductServiceImpl(
         return request.size
     }
 
+    override fun get(id: String): ProductDto {
+        val product = findProductByIdOrThrowNotFound(id)
+        return product.toDto()
+    }
+
     private fun convertRequestToProductAndNutritionFact(request: CreateProductRequest): Product {
         val product = Product(
             id = request.id!!,
@@ -60,6 +67,15 @@ class ProductServiceImpl(
         product.nutritionFact = nutritionFact
 
         return product
+    }
+
+    private fun findProductByIdOrThrowNotFound(id: String): Product {
+        val product = productRepository.findByIdOrNull(id)
+        if (product == null) {
+            throw NotFoundException()
+        } else {
+            return product
+        }
     }
 
     private fun Product.toDto(): ProductDto {
