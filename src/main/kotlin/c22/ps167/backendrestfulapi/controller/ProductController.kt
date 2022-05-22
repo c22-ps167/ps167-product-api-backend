@@ -25,4 +25,18 @@ class ProductController(private val productService: ProductService) {
         )
     }
 
+    @PostMapping(
+        value = ["/api/p/"],
+        produces = ["application/json"],
+        consumes = ["application/json"]
+    )
+    fun createBulkProduct(@RequestBody body: List<CreateProductRequest>): WebResponse<String> {
+        val response = productService.createBulk(body)
+        return WebResponse(
+            code = 200,
+            status = "success",
+            data = "added $response products"
+        )
+    }
+
 }

@@ -13,38 +13,53 @@ import java.util.*
 
 @Service
 class ProductServiceImpl(
-    private val validationUtil: ValidationUtil,
-    private val productRepository: ProductRepository
+    val validationUtil: ValidationUtil,
+    val productRepository: ProductRepository
 ) : ProductService {
     override fun create(request: CreateProductRequest): ProductDto {
         validationUtil.validate(request)
-        validationUtil.validate(request.nutritionFact)
 
         if (productRepository.existsById(request.id!!)) {
             throw AlreadyExistException()
         }
 
+        val product = convertRequestToProductAndNutritionFact(request)
+        productRepository.save(product)
+
+        return product.toDto()
+    }
+
+    override fun createBulk(request: List<CreateProductRequest>): Int {
+        productRepository.saveAll(
+            request.map {
+                validationUtil.validate(it)
+                convertRequestToProductAndNutritionFact(it)
+            }
+        )
+        return request.size
+    }
+
+    private fun convertRequestToProductAndNutritionFact(request: CreateProductRequest): Product {
         val product = Product(
-            id = request.id,
+            id = request.id!!,
             name = request.name!!,
             createdAt = Date(),
             updatedAt = null
         )
         val nutritionFact = NutritionFact(
-            calories = request.nutritionFact.calories!!,
-            totalFat = request.nutritionFact.totalFat!!,
-            saturatedFat = request.nutritionFact.saturatedFat!!,
-            protein = request.nutritionFact.protein!!,
-            totalCarbohydrate = request.nutritionFact.totalCarbohydrate!!,
-            sugar = request.nutritionFact.sugar!!,
-            sodium = request.nutritionFact.sodium!!
+            calories = request.calories!!,
+            totalFat = request.totalFat!!,
+            saturatedFat = request.saturatedFat!!,
+            protein = request.protein!!,
+            totalCarbohydrate = request.totalCarbohydrate!!,
+            sugar = request.sugar!!,
+            sodium = request.sodium!!
         )
 
         nutritionFact.product = product
         product.nutritionFact = nutritionFact
-        productRepository.save(product)
 
-        return product.toDto()
+        return product
     }
 
     private fun Product.toDto(): ProductDto {

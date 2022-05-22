@@ -6,13 +6,14 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import javax.validation.ConstraintViolationException
 
 @RestControllerAdvice
 class ErrorController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = [AlreadyExistException::class])
-    fun alreadyExist(alreadyExistException: AlreadyExistException): WebResponse<String> {
+    fun alreadyExist(): WebResponse<String> {
         return WebResponse(
             code = 400,
             status = "BAD REQUEST",
@@ -20,4 +21,13 @@ class ErrorController {
         )
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = [ConstraintViolationException::class])
+    fun invalidRequest(constraintViolationException: ConstraintViolationException): WebResponse<String> {
+        return WebResponse(
+            code = 400,
+            status = "BAD REQUEST",
+            data = constraintViolationException.message!!
+        )
+    }
 }

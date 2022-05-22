@@ -5,13 +5,31 @@ import javax.validation.constraints.NotNull
 
 data class CreateProductRequest(
 
-    @NotBlank
+    @field:NotBlank
     val id: String?,
 
-    @NotBlank
+    @field:NotBlank
     val name: String?,
 
-    @NotNull
-    val nutritionFact: CreateProductNutritionFactRequest
+    @field:NotNull
+    val calories: Int?,
+
+    @field:NotNull
+    val totalFat: Int?,
+
+    @field:NotNull
+    val saturatedFat: Int?,
+
+    @field:NotNull
+    val protein: Int?,
+
+    @field:NotNull
+    val totalCarbohydrate: Int?,
+
+    @field:NotNull
+    val sugar: Int?,
+
+    @field:NotNull
+    val sodium: Int?
 
 )

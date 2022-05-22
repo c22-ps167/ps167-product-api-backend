@@ -7,4 +7,6 @@ interface ProductService {
 
     fun create(request: CreateProductRequest): ProductDto
 
+    fun createBulk(request: List<CreateProductRequest>): Int
+
 }
