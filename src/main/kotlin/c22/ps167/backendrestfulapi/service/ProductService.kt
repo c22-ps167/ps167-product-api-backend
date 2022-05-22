@@ -1,6 +1,7 @@
 package c22.ps167.backendrestfulapi.service
 
 import c22.ps167.backendrestfulapi.data.model.CreateProductRequest
+import c22.ps167.backendrestfulapi.data.model.UpdateProductRequest
 import c22.ps167.backendrestfulapi.data.model.dto.ProductDto
 
 interface ProductService {
@@ -12,5 +13,7 @@ interface ProductService {
     fun get(id: String): ProductDto
 
     fun deleteAll()
+
+    fun update(id: String, request: UpdateProductRequest): ProductDto
 
 }

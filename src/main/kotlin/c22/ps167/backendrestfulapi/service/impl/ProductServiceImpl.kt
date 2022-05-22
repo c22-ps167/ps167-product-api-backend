@@ -3,6 +3,7 @@ package c22.ps167.backendrestfulapi.service.impl
 import c22.ps167.backendrestfulapi.data.entity.NutritionFact
 import c22.ps167.backendrestfulapi.data.entity.Product
 import c22.ps167.backendrestfulapi.data.model.CreateProductRequest
+import c22.ps167.backendrestfulapi.data.model.UpdateProductRequest
 import c22.ps167.backendrestfulapi.data.model.dto.ProductDto
 import c22.ps167.backendrestfulapi.data.repository.ProductRepository
 import c22.ps167.backendrestfulapi.service.ProductService
@@ -25,7 +26,7 @@ class ProductServiceImpl(
             throw AlreadyExistException()
         }
 
-        val product = convertRequestToProductAndNutritionFact(request)
+        val product = request.toProduct()
         productRepository.save(product)
 
         return product.toDto()
@@ -34,7 +35,7 @@ class ProductServiceImpl(
     override fun createBulk(request: List<CreateProductRequest>): Int {
         val products = request.map {
             validationUtil.validate(it)
-            convertRequestToProductAndNutritionFact(it)
+            it.toProduct()
         }
 
         val result = mutableListOf<Product>()
@@ -63,21 +64,44 @@ class ProductServiceImpl(
         productRepository.deleteAll()
     }
 
-    private fun convertRequestToProductAndNutritionFact(request: CreateProductRequest): Product {
+    override fun update(id: String, request: UpdateProductRequest): ProductDto {
+        val product = findProductByIdOrThrowNotFound(id)
+
+        product.apply {
+            name = request.name ?: product.name
+            updatedAt = Date()
+        }
+
+        product.nutritionFact?.apply {
+            calories = request.calories ?: product.nutritionFact!!.calories
+            totalFat = request.totalFat ?: product.nutritionFact!!.totalFat
+            saturatedFat = request.saturatedFat ?: product.nutritionFact!!.saturatedFat
+            protein = request.protein ?: product.nutritionFact!!.protein
+            totalCarbohydrate = request.totalCarbohydrate ?: product.nutritionFact!!.totalCarbohydrate
+            sugar = request.sugar ?: product.nutritionFact!!.sugar
+            sodium = request.sodium ?: product.nutritionFact!!.sodium
+        }
+
+        productRepository.save(product)
+
+        return product.toDto()
+    }
+
+    private fun CreateProductRequest.toProduct(): Product {
         val product = Product(
-            id = request.id!!,
-            name = request.name!!,
+            id = this.id!!,
+            name = this.name!!,
             createdAt = Date(),
             updatedAt = null
         )
         val nutritionFact = NutritionFact(
-            calories = request.calories!!,
-            totalFat = request.totalFat!!,
-            saturatedFat = request.saturatedFat!!,
-            protein = request.protein!!,
-            totalCarbohydrate = request.totalCarbohydrate!!,
-            sugar = request.sugar!!,
-            sodium = request.sodium!!
+            calories = this.calories!!,
+            totalFat = this.totalFat!!,
+            saturatedFat = this.saturatedFat!!,
+            protein = this.protein!!,
+            totalCarbohydrate = this.totalCarbohydrate!!,
+            sugar = this.sugar!!,
+            sodium = this.sodium!!
         )
 
         nutritionFact.product = product

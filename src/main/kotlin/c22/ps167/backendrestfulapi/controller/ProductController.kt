@@ -1,6 +1,7 @@
 package c22.ps167.backendrestfulapi.controller
 
 import c22.ps167.backendrestfulapi.data.model.CreateProductRequest
+import c22.ps167.backendrestfulapi.data.model.UpdateProductRequest
 import c22.ps167.backendrestfulapi.data.model.WebResponse
 import c22.ps167.backendrestfulapi.data.model.dto.ProductDto
 import c22.ps167.backendrestfulapi.service.ProductService
@@ -60,6 +61,22 @@ class ProductController(private val productService: ProductService) {
             code = 200,
             status = "OK",
             data = "deleted"
+        )
+    }
+
+    @PutMapping(
+        value = ["/api/p/{id}"],
+        produces = ["application/json"]
+    )
+    fun updateProduct(
+        @PathVariable("id") id: String,
+        @RequestBody body: UpdateProductRequest
+    ): WebResponse<ProductDto> {
+        val response = productService.update(id, body)
+        return WebResponse(
+            code = 200,
+            status = "OK",
+            data = response
         )
     }
 }
