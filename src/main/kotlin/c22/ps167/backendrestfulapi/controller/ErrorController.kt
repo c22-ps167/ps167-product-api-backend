@@ -17,7 +17,7 @@ class ErrorController {
     fun alreadyExist(): WebResponse<String> {
         return WebResponse(
             code = 400,
-            status = "BAD REQUEST",
+            status = "Bad Request",
             data = "Product Already Exist"
         )
     }
@@ -27,7 +27,7 @@ class ErrorController {
     fun invalidRequest(constraintViolationException: ConstraintViolationException): WebResponse<String> {
         return WebResponse(
             code = 400,
-            status = "BAD REQUEST",
+            status = "Bad Request",
             data = constraintViolationException.message!!
         )
     }
@@ -37,7 +37,7 @@ class ErrorController {
     fun notFound(): WebResponse<String> {
         return WebResponse(
             code = 404,
-            status = "NOT FOUND",
+            status = "Not Found",
             data = "Not Found"
         )
     }

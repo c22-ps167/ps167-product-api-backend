@@ -10,4 +10,7 @@ interface ProductService {
     fun createBulk(request: List<CreateProductRequest>): Int
 
     fun get(id: String): ProductDto
+
+    fun deleteAll()
+
 }

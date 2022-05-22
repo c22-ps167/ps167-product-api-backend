@@ -18,7 +18,7 @@ class ProductController(private val productService: ProductService) {
         val response = productService.create(body)
         return WebResponse(
             code = 200,
-            status = "success",
+            status = "OK",
             data = response
         )
     }
@@ -32,7 +32,7 @@ class ProductController(private val productService: ProductService) {
         val response = productService.createBulk(body)
         return WebResponse(
             code = 200,
-            status = "success",
+            status = "OK",
             data = "added $response products"
         )
     }
@@ -45,8 +45,21 @@ class ProductController(private val productService: ProductService) {
         val response = productService.get(id)
         return WebResponse(
             code = 200,
-            status = "success",
+            status = "OK",
             data = response
+        )
+    }
+
+    @DeleteMapping(
+        value = ["/api/p/"],
+        produces = ["application/json"]
+    )
+    fun deleteAllProduct(): WebResponse<String> {
+        productService.deleteAll()
+        return WebResponse(
+            code = 200,
+            status = "OK",
+            data = "deleted"
         )
     }
 }

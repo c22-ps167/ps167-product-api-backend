@@ -40,7 +40,7 @@ class ProductServiceImpl(
         val result = mutableListOf<Product>()
 
         products.forEach {
-            if (productRepository.findByIdOrNull(it.id) == null) {
+            if (!productRepository.existsById(it.id)) {
                 result.add(it)
             }
         }
@@ -57,6 +57,10 @@ class ProductServiceImpl(
     override fun get(id: String): ProductDto {
         val product = findProductByIdOrThrowNotFound(id)
         return product.toDto()
+    }
+
+    override fun deleteAll() {
+        productRepository.deleteAll()
     }
 
     private fun convertRequestToProductAndNutritionFact(request: CreateProductRequest): Product {
