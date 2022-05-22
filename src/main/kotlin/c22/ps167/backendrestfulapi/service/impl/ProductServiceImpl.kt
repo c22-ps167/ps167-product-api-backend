@@ -60,8 +60,10 @@ class ProductServiceImpl(
         return product.toDto()
     }
 
-    override fun deleteAll() {
+    override fun deleteAll(): Long {
+        val counter = productRepository.count()
         productRepository.deleteAll()
+        return counter
     }
 
     override fun update(id: String, request: UpdateProductRequest): ProductDto {
@@ -85,6 +87,12 @@ class ProductServiceImpl(
         productRepository.save(product)
 
         return product.toDto()
+    }
+
+    override fun delete(id: String) {
+        val  product = findProductByIdOrThrowNotFound(id)
+
+        productRepository.deleteById(id)
     }
 
     private fun CreateProductRequest.toProduct(): Product {
@@ -140,4 +148,5 @@ class ProductServiceImpl(
             sodium = this.sodium
         )
     }
+
 }
