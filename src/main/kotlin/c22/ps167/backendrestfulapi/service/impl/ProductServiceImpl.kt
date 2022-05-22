@@ -32,11 +32,15 @@ class ProductServiceImpl(
     }
 
     override fun createBulk(request: List<CreateProductRequest>): Int {
-        val result = mutableListOf<CreateProductRequest>()
-
-        request.forEach {
+        val products = request.map {
             validationUtil.validate(it)
-            if (!productRepository.existsById(it.id!!)) {
+            convertRequestToProductAndNutritionFact(it)
+        }
+
+        val result = mutableListOf<Product>()
+
+        products.forEach {
+            if (productRepository.findByIdOrNull(it.id) == null) {
                 result.add(it)
             }
         }
@@ -45,9 +49,9 @@ class ProductServiceImpl(
             throw AlreadyExistException()
         }
 
-        productRepository.saveAll(result.map { convertRequestToProductAndNutritionFact(it) })
+        productRepository.saveAll(result)
 
-        return request.size
+        return result.size
     }
 
     override fun get(id: String): ProductDto {
