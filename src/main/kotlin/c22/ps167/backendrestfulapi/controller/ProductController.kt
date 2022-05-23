@@ -66,7 +66,8 @@ class ProductController(private val productService: ProductService) {
 
     @PutMapping(
         value = ["/api/p/{id}"],
-        produces = ["application/json"]
+        produces = ["application/json"],
+        consumes = ["application/json"]
     )
     fun updateProduct(
         @PathVariable("id") id: String,

@@ -3,12 +3,15 @@ package c22.ps167.backendrestfulapi.controller
 import c22.ps167.backendrestfulapi.data.model.WebResponse
 import c22.ps167.backendrestfulapi.util.error.AlreadyExistException
 import c22.ps167.backendrestfulapi.util.error.NotFoundException
+import c22.ps167.backendrestfulapi.util.error.UnauthorizedException
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import javax.validation.ConstraintViolationException
 
+@EnableWebMvc
 @RestControllerAdvice
 class ErrorController {
 
@@ -39,6 +42,16 @@ class ErrorController {
             code = 404,
             status = "Not Found",
             data = "Not Found"
+        )
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(value = [UnauthorizedException::class])
+    fun unauthorized(unauthorizedException: UnauthorizedException): WebResponse<String?> {
+        return WebResponse(
+            code = 400,
+            status = "UNAUTHORIZED",
+            data = unauthorizedException.message
         )
     }
 }
