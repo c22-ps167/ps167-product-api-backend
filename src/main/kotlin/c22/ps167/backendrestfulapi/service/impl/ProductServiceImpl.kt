@@ -10,9 +10,11 @@ import c22.ps167.backendrestfulapi.service.ProductService
 import c22.ps167.backendrestfulapi.util.error.AlreadyExistException
 import c22.ps167.backendrestfulapi.util.error.NotFoundException
 import c22.ps167.backendrestfulapi.util.validation.ValidationUtil
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.util.*
+import java.util.stream.Collectors
 
 @Service
 class ProductServiceImpl(
@@ -90,10 +92,17 @@ class ProductServiceImpl(
     }
 
     override fun delete(id: String) {
-        val  product = findProductByIdOrThrowNotFound(id)
+        val product = findProductByIdOrThrowNotFound(id)
 
         productRepository.deleteById(id)
     }
+
+    override fun listByName(name: String, page: Int, size: Int): List<ProductDto> {
+        val mPage = productRepository.findAllByProductName(name, PageRequest.of(page, size))
+        val products: List<Product> = mPage.get().collect(Collectors.toList())
+        return products.map { it.toDto() }
+    }
+
 
     private fun CreateProductRequest.toProduct(): Product {
         val product = Product(

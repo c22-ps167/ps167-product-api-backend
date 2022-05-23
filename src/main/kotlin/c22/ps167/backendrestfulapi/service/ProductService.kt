@@ -18,4 +18,6 @@ interface ProductService {
 
     fun delete(id: String)
 
+    fun listByName(name: String, page: Int, size: Int): List<ProductDto>
+
 }

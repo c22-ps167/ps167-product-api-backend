@@ -2,6 +2,12 @@
 
 ## API DOCUMENTATION
 
+### AUTHORIZATION
+
+Endpoint: ```/*```
+
+@header: ```X-API-KEY```
+
 ### CREATE PRODUCT
 
 Endpoint: ```/api/p```

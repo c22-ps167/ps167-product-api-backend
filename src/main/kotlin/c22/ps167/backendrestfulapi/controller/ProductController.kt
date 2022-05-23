@@ -95,4 +95,21 @@ class ProductController(private val productService: ProductService) {
             data = "$id deleted"
         )
     }
+
+    @GetMapping(
+        value = ["/api/p"],
+        produces = ["application/json"]
+    )
+    fun listByName(
+        @RequestParam(value = "name") name: String,
+        @RequestParam(value = "page", defaultValue = "0") page: Int,
+        @RequestParam(value = "size", defaultValue = "10") size: Int
+    ): WebResponse<List<ProductDto>> {
+        val response = productService.listByName(name, page, size)
+        return WebResponse(
+            code = 200,
+            status = "OK",
+            data = response
+        )
+    }
 }
