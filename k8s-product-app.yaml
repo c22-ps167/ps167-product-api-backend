@@ -38,18 +38,18 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: DATABASE_USERNAME
+        - name: JDBC_DATABASE_USERNAME
           valueFrom:
             secretKeyRef:
               name: product-secret
-              key: DATABASE_USERNAME
-        - name: DATABASE_PASSWORD
+              key: JDBC_DATABASE_USERNAME
+        - name: JDBC_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: product-secret
-              key: DATABASE_PASSWORD
-        - name: DATABASE_URL
+              key: JDBC_DATABASE_PASSWORD
+        - name: JDBC_DATABASE_URL
           valueFrom:
             secretKeyRef:
               name: product-secret
-              key: DATABASE_URL
+              key: JDBC_DATABASE_URL
