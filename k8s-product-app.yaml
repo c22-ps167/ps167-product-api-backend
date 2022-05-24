@@ -3,11 +3,13 @@ kind: Service
 metadata:
   name: product-backend-service
 spec:
+  type: NodePort
   selector:
     app: product-backend
   ports:
   - port: 80
     targetPort: 8080
+    nodePort: 30001
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,3 +37,19 @@ spec:
         - "1500m"
         ports:
         - containerPort: 8080
+        env:
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: product-secret
+              key: DATABASE_USERNAME
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: product-secret
+              key: DATABASE_PASSWORD
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: product-secret
+              key: DATABASE_USERNAME
