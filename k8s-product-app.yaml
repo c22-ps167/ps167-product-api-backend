@@ -52,4 +52,4 @@ spec:
           valueFrom:
             secretKeyRef:
               name: product-secret
-              key: DATABASE_USERNAME
+              key: DATABASE_URL
