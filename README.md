@@ -1,5 +1,15 @@
 # BACKEND RESTFUL API
 
+Language: ```Kotlin```
+
+Framework: ```Spring```
+
+Dependencies:
+
+- ```Spring data JPA```
+- ```Spring validation```
+- ```Spring Web```
+
 ## API DOCUMENTATION
 
 ### AUTHORIZATION
@@ -209,6 +219,8 @@ url: ```http://localhost:8080/api/p/```
 ### LIST PRODUCT
 
 Endpoint: ```/api/p```
+
+@Param: ```name``` ```page``` ```size```
 
 url ```http://localhost:8080/api/p?name=Product&page=2&size=3```
 
