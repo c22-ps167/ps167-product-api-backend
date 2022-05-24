@@ -48,3 +48,10 @@ spec:
               secretKeyRef:
                 name: product-secret
                 key: POSTGRES_DB
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: <volume>
+      volumes:
+        - name: <volume>
+          persistentVolumeClaim:
+            claimName: product-pvc
