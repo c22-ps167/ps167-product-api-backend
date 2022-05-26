@@ -49,9 +49,19 @@ class ErrorController {
     @ExceptionHandler(value = [UnauthorizedException::class])
     fun unauthorized(unauthorizedException: UnauthorizedException): WebResponse<String?> {
         return WebResponse(
-            code = 400,
+            code = 401,
             status = "UNAUTHORIZED",
             data = unauthorizedException.message
+        )
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = [IllegalArgumentException::class])
+    fun illegalArgument(illegalArgumentException: java.lang.IllegalArgumentException): WebResponse<String?> {
+        return WebResponse(
+            code = 400,
+            status = "Bad Request",
+            data = illegalArgumentException.message
         )
     }
 }

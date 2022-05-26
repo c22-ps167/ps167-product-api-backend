@@ -102,7 +102,7 @@ class ProductController(private val productService: ProductService) {
     )
     fun listByName(
         @RequestParam(value = "name") name: String,
-        @RequestParam(value = "page", defaultValue = "0") page: Int,
+        @RequestParam(value = "page", defaultValue = "1") page: Int,
         @RequestParam(value = "size", defaultValue = "10") size: Int
     ): WebResponse<List<ProductDto>> {
         val response = productService.listByName(name, page, size)
