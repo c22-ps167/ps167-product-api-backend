@@ -12,7 +12,7 @@ interface ProductService {
 
     fun get(id: String): ProductDto
 
-    fun deleteAll(): Long
+    fun deleteAll(): Int
 
     fun update(id: String, request: UpdateProductRequest): ProductDto
 

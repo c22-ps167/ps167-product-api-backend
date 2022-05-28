@@ -28,10 +28,7 @@ class ProductServiceImpl(
             throw AlreadyExistException()
         }
 
-        val product = request.toProduct()
-        productRepository.save(product)
-
-        return product.toDto()
+        return productRepository.save(request.toProduct()).toDto()
     }
 
     override fun createBulk(request: List<CreateProductRequest>): Int {
@@ -58,14 +55,13 @@ class ProductServiceImpl(
     }
 
     override fun get(id: String): ProductDto {
-        val product = findProductByIdOrThrowNotFound(id)
-        return product.toDto()
+        return findProductByIdOrThrowNotFound(id).toDto()
     }
 
-    override fun deleteAll(): Long {
+    override fun deleteAll(): Int {
         val counter = productRepository.count()
         productRepository.deleteAll()
-        return counter
+        return counter.toInt()
     }
 
     override fun update(id: String, request: UpdateProductRequest): ProductDto {
@@ -86,9 +82,7 @@ class ProductServiceImpl(
             sodium = request.sodium ?: product.nutritionFact!!.sodium
         }
 
-        productRepository.save(product)
-
-        return product.toDto()
+        return productRepository.save(product).toDto()
     }
 
     override fun delete(id: String) {
