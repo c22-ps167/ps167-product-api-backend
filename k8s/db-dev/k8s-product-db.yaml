@@ -36,17 +36,17 @@ spec:
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: product-secret
+                name: product-db-secret
                 key: POSTGRES_PASSWORD
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                name: product-secret
+                name: product-db-secret
                 key: POSTGRES_USER
           - name: POSTGRES_DB
             valueFrom:
               secretKeyRef:
-                name: product-secret
+                name: product-db-secret
                 key: POSTGRES_DB
           - name: PGDATA
             value: /var/lib/postgresql/data/pgdata
