@@ -1,28 +1,28 @@
 # BACKEND RESTFUL API
 
-Language: ```Kotlin```
+Language: `Kotlin`
 
-Framework: ```Spring```
+Framework: `Spring`
 
 Dependencies:
 
-- ```Spring data JPA```
-- ```Spring validation```
-- ```Spring Web```
+- `Spring data JPA`
+- `Spring validation`
+- `Spring Web`
 
 ## API DOCUMENTATION
 
 ### AUTHORIZATION
 
-Endpoint: ```/*```
+Endpoint: `/*`
 
-@header: ```X-API-KEY```
+@header: `X-API-KEY`
 
 ### CREATE PRODUCT
 
-Endpoint: ```/api/p```
+Endpoint: `/api/p`
 
-url: ```http://localhost:8080/api/p```
+url: `http://localhost:8080/api/p`
 
 @body request:
 
@@ -66,9 +66,9 @@ url: ```http://localhost:8080/api/p```
 
 ### GET PRODUCT
 
-Endpoint: ```/api/p/{id}```
+Endpoint: `/api/p/{id}`
 
-url: ```http://localhost:8080/api/p/idA123```
+url: `http://localhost:8080/api/p/idA123`
 
 @body response:
 
@@ -96,9 +96,9 @@ url: ```http://localhost:8080/api/p/idA123```
 
 ### UPDATE PRODUCT
 
-Endpoint: ```/api/p/{id}```
+Endpoint: `/api/p/{id}`
 
-url: ```http://localhost:8080/api/p/idA123```
+url: `http://localhost:8080/api/p/idA123`
 
 @body request:
 
@@ -141,9 +141,9 @@ url: ```http://localhost:8080/api/p/idA123```
 
 ### DELETE PRODUCT
 
-Endpoint: ```/api/p/{id}```
+Endpoint: `/api/p/{id}`
 
-url: ```http://localhost:8080/api/p/idA123```
+url: `http://localhost:8080/api/p/idA123`
 
 @body response:
 
@@ -157,9 +157,9 @@ url: ```http://localhost:8080/api/p/idA123```
 
 ### CREATE PRODUCTS
 
-Endpoint: ```/api/p/```
+Endpoint: `/api/p/`
 
-url: ```http://localhost:8080/api/p/```
+url: `http://localhost:8080/api/p/`
 
 @body request:
 
@@ -202,9 +202,9 @@ url: ```http://localhost:8080/api/p/```
 
 ### DELETE PRODUCTS
 
-Endpoint: ```/api/p/```
+Endpoint: `/api/p/`
 
-url: ```http://localhost:8080/api/p/```
+url: `http://localhost:8080/api/p/`
 
 @Body response:
 
@@ -218,11 +218,11 @@ url: ```http://localhost:8080/api/p/```
 
 ### LIST PRODUCT
 
-Endpoint: ```/api/p```
+Endpoint: `/api/p`
 
-@Param: ```name``` ```page``` ```size```
+@Param: `name` `page` `size`
 
-url ```http://localhost:8080/api/p?name=Product&page=2&size=3```
+url `http://localhost:8080/api/p?name=Product&page=2&size=3`
 
 @Body response:
 
