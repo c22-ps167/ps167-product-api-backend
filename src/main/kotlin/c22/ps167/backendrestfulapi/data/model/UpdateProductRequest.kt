@@ -27,6 +27,9 @@ data class UpdateProductRequest(
     val sugar: Int?,
 
     @field:NotNull
-    val sodium: Int?
+    val sodium: Int?,
+
+    @field:NotNull
+    val servingSize: Int?
 
 )

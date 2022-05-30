@@ -17,6 +17,7 @@ data class ProductDto(
         val protein: Int? = null,
         val totalCarbohydrate: Int? = null,
         val sugar: Int? = null,
-        val sodium: Int? = null
+        val sodium: Int? = null,
+        val servingSize: Int? = null
     ) : Serializable
 }

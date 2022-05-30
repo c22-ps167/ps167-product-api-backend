@@ -111,7 +111,8 @@ class ProductServiceImpl(
             protein = this.protein!!,
             totalCarbohydrate = this.totalCarbohydrate!!,
             sugar = this.sugar!!,
-            sodium = this.sodium!!
+            sodium = this.sodium!!,
+            servingSize = this.servingSize!!
         )
 
         nutritionFact.product = product
@@ -147,7 +148,8 @@ class ProductServiceImpl(
             protein = this.protein,
             totalCarbohydrate = this.totalCarbohydrate,
             sugar = this.sugar,
-            sodium = this.sodium
+            sodium = this.sodium,
+            servingSize = this.servingSize
         )
     }
 

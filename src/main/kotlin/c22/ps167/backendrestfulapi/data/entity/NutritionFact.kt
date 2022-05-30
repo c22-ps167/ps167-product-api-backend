@@ -27,7 +27,10 @@ data class NutritionFact(
     var sugar: Int,
 
     @Column(name = "sodium")
-    var sodium: Int
+    var sodium: Int,
+
+    @Column(name = "serving_size")
+    val servingSize: Int
 
 ) {
     @Id
