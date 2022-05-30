@@ -36,7 +36,8 @@ url: `http://localhost:8080/api/p`
   "protein": 0,
   "totalCarbohydrate": 0,
   "sugar": 0,
-  "sodium": 0
+  "sodium": 0,
+  "servingSize": 0
 }
 ```
 
@@ -49,7 +50,7 @@ url: `http://localhost:8080/api/p`
   "data": {
     "id": "idA123",
     "name": "Product A",
-    "createdAt": 1653312282485,
+    "createdAt": 1653909614431,
     "updatedAt": null,
     "nutritionFact": {
       "calories": 0,
@@ -58,7 +59,8 @@ url: `http://localhost:8080/api/p`
       "protein": 0,
       "totalCarbohydrate": 0,
       "sugar": 0,
-      "sodium": 0
+      "sodium": 0,
+      "servingSize": 0
     }
   }
 }
@@ -79,7 +81,7 @@ url: `http://localhost:8080/api/p/idA123`
   "data": {
     "id": "idA123",
     "name": "Product A",
-    "createdAt": 1653312282485,
+    "createdAt": 1653909614431,
     "updatedAt": null,
     "nutritionFact": {
       "calories": 0,
@@ -88,7 +90,8 @@ url: `http://localhost:8080/api/p/idA123`
       "protein": 0,
       "totalCarbohydrate": 0,
       "sugar": 0,
-      "sodium": 0
+      "sodium": 0,
+      "servingSize": 0
     }
   }
 }
@@ -111,7 +114,8 @@ url: `http://localhost:8080/api/p/idA123`
   "protein": 1,
   "totalCarbohydrate": 1,
   "sugar": 1,
-  "sodium": 1
+  "sodium": 1,
+  "servingSize": 0
 }
 ```
 
@@ -124,8 +128,8 @@ url: `http://localhost:8080/api/p/idA123`
   "data": {
     "id": "idA123",
     "name": "Product A",
-    "createdAt": 1653312282485,
-    "updatedAt": 1653312377849,
+    "createdAt": 1653909614431,
+    "updatedAt": 1653909689524,
     "nutritionFact": {
       "calories": 1,
       "totalFat": 1,
@@ -133,7 +137,8 @@ url: `http://localhost:8080/api/p/idA123`
       "protein": 1,
       "totalCarbohydrate": 1,
       "sugar": 1,
-      "sodium": 1
+      "sodium": 1,
+      "servingSize": 0
     }
   }
 }
@@ -174,7 +179,8 @@ url: `http://localhost:8080/api/p/`
     "protein": 7,
     "totalCarbohydrate": 20,
     "sugar": 18,
-    "sodium": 60
+    "sodium": 60,
+    "servingSize": 200
   },
   {
     "id": "idC123",
@@ -185,7 +191,8 @@ url: `http://localhost:8080/api/p/`
     "protein": 1,
     "totalCarbohydrate": 25,
     "sugar": 14,
-    "sodium": 150
+    "sodium": 150,
+    "servingSize": 200
   }
 ]
 ```
@@ -243,7 +250,8 @@ url `http://localhost:8080/api/p?name=Product&page=2&size=3`
         "protein": 1,
         "totalCarbohydrate": 25,
         "sugar": 14,
-        "sodium": 150
+        "sodium": 150,
+        "servingSize": 200
       }
     },
     {
@@ -258,7 +266,8 @@ url `http://localhost:8080/api/p?name=Product&page=2&size=3`
         "protein": 7,
         "totalCarbohydrate": 20,
         "sugar": 18,
-        "sodium": 60
+        "sodium": 60,
+        "servingSize": 200
       }
     },
     {
@@ -273,7 +282,8 @@ url `http://localhost:8080/api/p?name=Product&page=2&size=3`
         "protein": 1,
         "totalCarbohydrate": 25,
         "sugar": 14,
-        "sodium": 150
+        "sodium": 150,
+        "servingSize": 200
       }
     }
   ]
