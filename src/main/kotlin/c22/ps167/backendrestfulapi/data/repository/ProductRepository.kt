@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param
 
 interface ProductRepository : JpaRepository<Product, String> {
 
-    @Query("SELECT u FROM Product u WHERE u.name LIKE %:name%")
+    @Query("SELECT u FROM Product u WHERE LOWER(u.name) LIKE LOWER(name)")
     fun findAllByProductName(@Param(value = "name") name: String, pageable: Pageable): Page<Product>
 
 }
