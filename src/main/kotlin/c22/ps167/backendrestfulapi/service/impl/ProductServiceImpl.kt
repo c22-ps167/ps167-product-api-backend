@@ -91,7 +91,7 @@ class ProductServiceImpl(
     }
 
     override fun listByName(name: String, page: Int, size: Int): List<ProductDto> {
-        val mPage = productRepository.findAllByProductName(name, PageRequest.of(page-1, size))
+        val mPage = productRepository.findAllByProductName(name.lowercase(), PageRequest.of(page-1, size))
         val products: List<Product> = mPage.get().collect(Collectors.toList())
         return products.map { it.toDto() }
     }
