@@ -6,9 +6,10 @@ Framework: `Spring`
 
 Dependencies:
 
+- `Spring Web`
 - `Spring data JPA`
 - `Spring validation`
-- `Spring Web`
+- `postgres driver`
 
 ## API DOCUMENTATION
 
@@ -37,7 +38,8 @@ url: `http://localhost:8080/api/p`
   "totalCarbohydrate": 0,
   "sugar": 0,
   "sodium": 0,
-  "servingSize": 0
+  "servingSize": 0,
+  "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
 }
 ```
 
@@ -61,7 +63,8 @@ url: `http://localhost:8080/api/p`
       "sugar": 0,
       "sodium": 0,
       "servingSize": 0
-    }
+    },
+    "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
   }
 }
 ```
@@ -92,7 +95,8 @@ url: `http://localhost:8080/api/p/idA123`
       "sugar": 0,
       "sodium": 0,
       "servingSize": 0
-    }
+    },
+    "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
   }
 }
 ```
@@ -115,7 +119,8 @@ url: `http://localhost:8080/api/p/idA123`
   "totalCarbohydrate": 1,
   "sugar": 1,
   "sodium": 1,
-  "servingSize": 0
+  "servingSize": 0,
+  "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
 }
 ```
 
@@ -139,7 +144,8 @@ url: `http://localhost:8080/api/p/idA123`
       "sugar": 1,
       "sodium": 1,
       "servingSize": 0
-    }
+    },
+    "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
   }
 }
 ```
@@ -180,7 +186,8 @@ url: `http://localhost:8080/api/p/`
     "totalCarbohydrate": 20,
     "sugar": 18,
     "sodium": 60,
-    "servingSize": 200
+    "servingSize": 200,
+    "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
   },
   {
     "id": "idC123",
@@ -192,7 +199,8 @@ url: `http://localhost:8080/api/p/`
     "totalCarbohydrate": 25,
     "sugar": 14,
     "sodium": 150,
-    "servingSize": 200
+    "servingSize": 200,
+    "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
   }
 ]
 ```
@@ -252,7 +260,8 @@ url `http://localhost:8080/api/p?name=Product&page=2&size=3`
         "sugar": 14,
         "sodium": 150,
         "servingSize": 200
-      }
+      },
+      "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
     },
     {
       "id": "idH123",
@@ -268,7 +277,8 @@ url `http://localhost:8080/api/p?name=Product&page=2&size=3`
         "sugar": 18,
         "sodium": 60,
         "servingSize": 200
-      }
+      },
+      "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
     },
     {
       "id": "idI123",
@@ -284,7 +294,8 @@ url `http://localhost:8080/api/p?name=Product&page=2&size=3`
         "sugar": 14,
         "sodium": 150,
         "servingSize": 200
-      }
+      },
+      "url": "https://static.wikia.nocookie.net/himoto-umaruchan/images/a/a2/Umaru%27s_anime_design_%28chibi%29.png/revision/latest?cb=20200411195915"
     }
   ]
 }
