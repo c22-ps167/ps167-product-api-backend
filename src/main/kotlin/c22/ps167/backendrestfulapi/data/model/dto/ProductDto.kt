@@ -8,7 +8,8 @@ data class ProductDto(
     val name: String? = null,
     val createdAt: Date? = null,
     val updatedAt: Date? = null,
-    val nutritionFact: NutritionFactDto? = null
+    val nutritionFact: NutritionFactDto? = null,
+    val url: String? = null
 ) : Serializable {
     data class NutritionFactDto(
         val calories: Int? = null,
@@ -18,6 +19,7 @@ data class ProductDto(
         val totalCarbohydrate: Int? = null,
         val sugar: Int? = null,
         val sodium: Int? = null,
-        val servingSize: Int? = null
+        val servingSize: Int? = null,
+
     ) : Serializable
 }

@@ -69,6 +69,7 @@ class ProductServiceImpl(
 
         product.apply {
             name = request.name ?: product.name
+            url = request.url ?: product.url
             updatedAt = Date()
         }
 
@@ -80,6 +81,7 @@ class ProductServiceImpl(
             totalCarbohydrate = request.totalCarbohydrate ?: product.nutritionFact!!.totalCarbohydrate
             sugar = request.sugar ?: product.nutritionFact!!.sugar
             sodium = request.sodium ?: product.nutritionFact!!.sodium
+            servingSize = request.servingSize ?: product.nutritionFact!!.servingSize
         }
 
         return productRepository.save(product).toDto()
@@ -102,7 +104,8 @@ class ProductServiceImpl(
             id = this.id!!,
             name = this.name!!,
             createdAt = Date(),
-            updatedAt = null
+            updatedAt = null,
+            url = this.url!!
         )
         val nutritionFact = NutritionFact(
             calories = this.calories!!,
@@ -136,7 +139,8 @@ class ProductServiceImpl(
             name = this.name,
             createdAt = this.createdAt,
             updatedAt = this.updatedAt,
-            nutritionFact = this.nutritionFact!!.toDto()
+            nutritionFact = this.nutritionFact!!.toDto(),
+            url = this.url
         )
     }
 

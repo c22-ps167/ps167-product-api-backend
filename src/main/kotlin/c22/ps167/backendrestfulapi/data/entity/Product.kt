@@ -20,7 +20,10 @@ data class Product(
     val createdAt: Date,
 
     @Column(name = "updated_at")
-    var updatedAt: Date?
+    var updatedAt: Date?,
+
+    @Column(name = "url")
+    var url: String
 
 ) {
     @OneToOne(cascade = [CascadeType.ALL], optional = false, orphanRemoval = true)
@@ -33,13 +36,13 @@ data class Product(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as Product
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , name = $name , createdAt = $createdAt , updatedAt = $updatedAt , nutritionFact = $nutritionFact )"
+        return this::class.simpleName + "(id = $id , name = $name , createdAt = $createdAt , updatedAt = $updatedAt , url = $url , nutritionFact = $nutritionFact )"
     }
 }

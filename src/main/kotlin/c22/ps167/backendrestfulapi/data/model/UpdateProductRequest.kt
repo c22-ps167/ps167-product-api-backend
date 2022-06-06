@@ -30,6 +30,9 @@ data class UpdateProductRequest(
     val sodium: Int?,
 
     @field:NotNull
-    val servingSize: Int?
+    val servingSize: Int?,
+
+    @field:NotBlank
+    val url: String?
 
 )
