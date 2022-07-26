@@ -36,12 +36,8 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
-bootJar {
-	archiveClassifier.set('boot')
-}
-
-jar {
-	archiveClassifier.set('')
+tasks.getByName<Jar>("jar") {
+	enabled = false
 }
 
 tasks.withType<Test> {
