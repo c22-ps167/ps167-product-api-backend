@@ -36,6 +36,14 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+bootJar {
+	archiveClassifier.set('boot')
+}
+
+jar {
+	archiveClassifier.set('')
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
